@@ -34,6 +34,6 @@ The status bar item appears on the right side and updates automatically as you w
 - Single-line selection: `12:5 (10 chars)`
 - Multi-line selection: `12:5 (25 chars, 3 lines)`
 
-## 👥 Contributing
+## 🤝 Contributing
 
 Spotted a bug or have an idea to improve the extension? Contributions are welcome, feel free to open an issue or pull request on GitHub. 🖤
