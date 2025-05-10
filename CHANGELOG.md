@@ -2,6 +2,10 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.4] - 2025-05-11 🔧
+
+- **Fixed:** Updated GitHub repository links in package.json to point to the correct repository.
+
 ## [0.0.3] - 2025-05-11 🔧
 
 - **Documentation:** Improved README with setup instructions and feature descriptions.
