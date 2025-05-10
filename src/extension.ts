@@ -1,26 +1,51 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const statusBarItem = vscode.window.createStatusBarItem(
+    vscode.StatusBarAlignment.Right,
+    150
+  );
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vscode-smart-editor-selection" is now active!');
+  statusBarItem.tooltip = "Go to Line/Column";
+  statusBarItem.command = "workbench.action.gotoLine";
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('vscode-smart-editor-selection.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from vscode-smart-editor-selection!');
-	});
+  const updateStatusBarPosition = () => {
+    try {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        statusBarItem.hide();
+        return;
+      }
 
-	context.subscriptions.push(disposable);
+      const position = editor.selection.active;
+      const selection = editor.selection;
+      let displayText = `${position.line + 1}:${position.character + 1}`;
+
+      if (!selection.isEmpty) {
+        const selectedText = editor.document.getText(selection);
+        const lineCount = selection.end.line - selection.start.line + 1;
+        const selectionInfo =
+          lineCount > 1
+            ? ` (${selectedText.length} chars, ${lineCount} lines)`
+            : ` (${selectedText.length} chars)`;
+        displayText += selectionInfo;
+      }
+
+      statusBarItem.text = displayText;
+      statusBarItem.show();
+    } catch (error) {
+      console.error("Error updating status bar:", error);
+      statusBarItem.hide();
+    }
+  };
+
+  updateStatusBarPosition();
+
+  context.subscriptions.push(
+    statusBarItem,
+    vscode.window.onDidChangeActiveTextEditor(updateStatusBarPosition),
+    vscode.window.onDidChangeTextEditorSelection(updateStatusBarPosition)
+  );
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}

@@ -1,41 +1,57 @@
 {
-  "name": "vscode-smart-editor-selection",
-  "displayName": "vscode-smart-editor-selection",
-  "description": "",
-  "version": "0.0.1",
+  "name": "selection-stats",
+  "displayName": "Selection Stats & Line Counter",
+  "description": "A VS Code extension that supercharges your status bar with detailed, real-time information about your cursor position and text selections.",
+  "version": "0.0.2",
+  "publisher": "pavelas",
+  "icon": "images/icon.png",
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.96.2"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Visualization"
   ],
-  "activationEvents": [],
-  "main": "./out/extension.js",
+  "keywords": [
+    "selection",
+    "status bar",
+    "cursor",
+    "position",
+    "line count"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "vscode-smart-editor-selection.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "commands": []
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && node esbuild.js --production",
+    "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/vscode": "^1.99.0",
-    "@types/mocha": "^10.0.10",
+    "@types/vscode": "^1.96.2",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
+    "esbuild": "^0.20.2",
     "eslint": "^9.23.0",
-    "typescript": "^5.8.2",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
-  }
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pavel/vscode-smart-editor-selection"
+  },
+  "bugs": {
+    "url": "https://github.com/pavel/vscode-smart-editor-selection/issues"
+  },
+  "homepage": "https://github.com/pavel/vscode-smart-editor-selection#readme"
 }
