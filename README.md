@@ -28,7 +28,7 @@ This extension enhances your status bar with helpful, real-time information:
 
 The status bar item appears on the right side and updates automatically as you work.
 
-### 🔍 Example Displays
+### 🔍 Examples
 
 - Single cursor: `12:5` (line 12, column 5)
 - Single-line selection: `12:5 (10 chars)`
