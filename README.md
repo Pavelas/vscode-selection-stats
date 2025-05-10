@@ -1,6 +1,6 @@
 # Selection Stats & Line Counter 📏
 
-A VS Code extension that supercharges your status bar with detailed, real-time information about your cursor position and text selections. Inspired by the Zed editor, it brings a more informative and modern selection display! 🚀
+A VSCode extension that supercharges your status bar with detailed information about your cursor position and text selections. Inspired by the Zed editor, it brings a more informative and modern selection display! 🚀
 
 ## ⚙️ Recommended Setup
 
@@ -12,7 +12,7 @@ A VS Code extension that supercharges your status bar with detailed, real-time i
 
 ## 🎬 Demo
 
-[![Selection Stats & Line Counter Demo](https://raw.githubusercontent.com/pavel/vscode-smart-editor-selection/main/images/demo.gif)](https://raw.githubusercontent.com/pavel/vscode-smart-editor-selection/main/images/demo.gif)
+[![Selection Stats & Line Counter Demo](/images/demo.gif)](/images/demo.gif)
 
 ## ✨ Features
 
