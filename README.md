@@ -4,7 +4,7 @@ A VSCode extension that supercharges your status bar with detailed information a
 
 ## ⚙️ Recommended Setup
 
-1. **Install** the Selection Stats & Line Counter extension.
+1. **Install** the [Selection Stats & Line Counter extension](https://marketplace.visualstudio.com/items?itemName=pavelas.selection-stats).
 2. **Right-click** on the status bar.
 3. **Disable** the default VS Code "Editor Selection" item.
 4. **Make sure** Selection Stats & Line Counter is enabled.
