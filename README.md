@@ -1,8 +1,8 @@
-# Selection Stats & Line Counter 📏
-
 <p align="center">
   <a title="Selection Stats & Line Counter Extension" href="https://marketplace.visualstudio.com/items?itemName=pavelas.selection-stats"><img src="images/icon.png" alt="Selection Stats & Line Counter Logo" height="128" align="center"/></a>
 </p>
+
+# Selection Stats & Line Counter 📏
 
 A VSCode extension that supercharges your status bar with detailed information about your cursor position and text selections. Inspired by the Zed editor, it brings a more informative and modern selection display! 🚀
 
