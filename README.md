@@ -33,6 +33,7 @@ The status bar item appears on the right side and updates automatically as you w
 - Single cursor: `12:5` (line 12, column 5)
 - Single-line selection: `12:5 (10 chars)`
 - Multi-line selection: `12:5 (25 chars, 3 lines)`
+- Multiple selections: `3 selected (33 chars, 5 lines)`
 
 ## 🤝 Contributing
 

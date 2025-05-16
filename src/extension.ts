@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
       totalChars += document.getText(sel).length;
       totalLines += sel.end.line - sel.start.line + 1;
     }
-    return `${selections.length} selections (${totalChars} chars, ${totalLines} lines)`;
+    return `${selections.length} selected (${totalChars} chars, ${totalLines} lines)`;
   };
 
   const updateStatusBarPosition = () => {
