@@ -9,6 +9,37 @@ export function activate(context: vscode.ExtensionContext) {
   statusBarItem.tooltip = "Go to Line/Column";
   statusBarItem.command = "workbench.action.gotoLine";
 
+  const getSingleCursorDisplayText = (position: vscode.Position) => {
+    return `${position.line + 1}:${position.character + 1}`;
+  };
+
+  const getSingleSelectionDisplayText = (
+    selection: vscode.Selection,
+    document: vscode.TextDocument
+  ) => {
+    const position = selection.active;
+    const selectedText = document.getText(selection);
+    const lineCount = selection.end.line - selection.start.line + 1;
+    const selectionInfo =
+      lineCount > 1
+        ? ` (${selectedText.length} chars, ${lineCount} lines)`
+        : ` (${selectedText.length} chars)`;
+    return `${position.line + 1}:${position.character + 1}${selectionInfo}`;
+  };
+
+  const getMultiSelectionDisplayText = (
+    selections: readonly vscode.Selection[],
+    document: vscode.TextDocument
+  ) => {
+    let totalChars = 0;
+    let totalLines = 0;
+    for (const sel of selections) {
+      totalChars += document.getText(sel).length;
+      totalLines += sel.end.line - sel.start.line + 1;
+    }
+    return `${selections.length} selections (${totalChars} chars, ${totalLines} lines)`;
+  };
+
   const updateStatusBarPosition = () => {
     try {
       const editor = vscode.window.activeTextEditor;
@@ -19,16 +50,15 @@ export function activate(context: vscode.ExtensionContext) {
 
       const position = editor.selection.active;
       const selection = editor.selection;
-      let displayText = `${position.line + 1}:${position.character + 1}`;
+      const selections = editor.selections;
+      let displayText: string;
 
-      if (!selection.isEmpty) {
-        const selectedText = editor.document.getText(selection);
-        const lineCount = selection.end.line - selection.start.line + 1;
-        const selectionInfo =
-          lineCount > 1
-            ? ` (${selectedText.length} chars, ${lineCount} lines)`
-            : ` (${selectedText.length} chars)`;
-        displayText += selectionInfo;
+      if (selections.length > 1) {
+        displayText = getMultiSelectionDisplayText(selections, editor.document);
+      } else if (!selection.isEmpty) {
+        displayText = getSingleSelectionDisplayText(selection, editor.document);
+      } else {
+        displayText = getSingleCursorDisplayText(position);
       }
 
       statusBarItem.text = displayText;

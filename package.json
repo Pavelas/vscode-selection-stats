@@ -2,7 +2,7 @@
   "name": "selection-stats",
   "displayName": "Selection Stats & Line Counter",
   "description": "A VS Code extension that supercharges your status bar with detailed, real-time information about your cursor position and text selections.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "pavelas",
   "icon": "images/icon.png",
   "engines": {
