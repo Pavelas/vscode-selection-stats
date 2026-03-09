@@ -2,6 +2,10 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.7] - 2026-03-09 🔧
+
+- **Fixed:** Multiple selections on the same line no longer count that line multiple times. Line count now correctly reflects the number of unique lines spanned.
+
 ## [0.0.5] - 2024-03-19 🚀
 
 - **Code Organization:** Refactored code to improve maintainability and readability.
