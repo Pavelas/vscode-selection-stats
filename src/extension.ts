@@ -31,12 +31,20 @@ export function activate(context: vscode.ExtensionContext) {
     selections: readonly vscode.Selection[],
     document: vscode.TextDocument
   ) => {
+    const lineSet = new Set<number>();
+
     let totalChars = 0;
-    let totalLines = 0;
+
     for (const sel of selections) {
       totalChars += document.getText(sel).length;
-      totalLines += sel.end.line - sel.start.line + 1;
+
+      for (let line = sel.start.line; line <= sel.end.line; line++) {
+        lineSet.add(line);
+      }
     }
+
+    const totalLines = lineSet.size;
+
     return `${selections.length} selected (${totalChars} chars, ${totalLines} lines)`;
   };
 
